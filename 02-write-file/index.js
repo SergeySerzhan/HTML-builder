@@ -12,12 +12,16 @@ const rl = readline.createInterface({input: stdin, output: stdout, prompt: 'Type
 rl.prompt();
 
 rl.on('line', (line) => {
-  if(line === 'exit') rl.close();
-  file.write(`${line}\n`);
-  rl.prompt();
+  if(line === 'exit') {
+    readline.moveCursor(stdout, 0, -1);
+    rl.close();
+  }
+  else{
+    file.write(`${line}\n`);
+    rl.prompt();
+  }
 });
 
 rl.on('close', () => {
-  rl.clearLine(stdout);
-  console.log('Goodbye:)');
+  console.log('\nGoodbye:)');
 });
