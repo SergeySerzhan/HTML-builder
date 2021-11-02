@@ -9,7 +9,7 @@ const pathToFolder = path.join(__dirname, 'secret-folder');
     if(file.isFile()) {
       const pathToFile = path.join(pathToFolder, file.name);
       const data = await stat(pathToFile);
-      console.log(`${file.name.split('.')[0]} - ${path.extname(pathToFile).slice(1)} - ${data.size / 1000}kb`);
+      console.log(`${file.name.split('.')[0]} - ${path.extname(pathToFile).slice(1)} - ${data.size / 1024}kb`);
     }
   }
 })();
