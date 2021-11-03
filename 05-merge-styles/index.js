@@ -11,7 +11,7 @@ const {readdir, open} = require('fs/promises');
   for (const file of files) {
     if(file.isFile() && path.extname(path.join(pathToDir, file.name)) === '.css') {
       const fd = await open(path.join(pathToDir, file.name));
-      fd.createReadStream().pipe(bundle);
+      fd.createReadStream().pipe(bundle, {end: false});
     }
   }
 })();
