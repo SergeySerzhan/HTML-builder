@@ -1,10 +1,10 @@
 const path = require('path');
 const {readdir, open} = require('fs/promises');
 
-async  function createStyle (filename) {
+(async  function () {
   const pathToDir = path.join(__dirname, 'styles');
 
-  const bundle = (await open(path.join(__dirname, 'project-dist', `${filename}.css`), 'w')).createWriteStream();
+  const bundle = (await open(path.join(__dirname, 'project-dist', 'bundle.css'), 'w')).createWriteStream();
 
   const files = await readdir(pathToDir, {withFileTypes: true});
 
@@ -14,6 +14,4 @@ async  function createStyle (filename) {
       fd.createReadStream().pipe(bundle);
     }
   }
-}
-
-createStyle('bundle');
+})();
